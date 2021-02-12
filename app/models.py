@@ -1,6 +1,7 @@
 from app import db
 from datetime import datetime
 from flask_login import UserMixin
+from app import login
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -26,4 +27,8 @@ def set_password(self, password):
 
 def check_password(self, password):
     return check_password_hash(self.password_hash, password)
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
