@@ -6,23 +6,13 @@ from app.models import User
 from flask_login import logout_user
 from flask import request
 from werkzeug.urls import url_parse
+from flask_login import login_required
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index ():
-    user = {'username': 'Jonathan'}
-    posts = [
-            {
-                    'author' : {'username': 'Jimmy'},
-                    'body' : 'Beautiful day in Toronto'
-            },
-            {
-                    'author' : {'username': 'Sally'},
-                    'body' : 'It\'s a horrible day in Toronto'
-            }
-    ]
-    return render_template('index.html', user=user, posts=posts)
+        return render_template('index.html', title ='Home Page', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
