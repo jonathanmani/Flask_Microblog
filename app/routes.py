@@ -1,14 +1,11 @@
-from flask import render_template
-from app import app
-from app.forms import LoginForm
-from flask_login import current_user, login_user
+from flask import render_template, flash, request 
+from app import app, db
+from app.forms import LoginForm, RegistrationForm
+from flask_login import current_user, login_user, login_required, logout_user
 from app.models import User
-from flask_login import logout_user
-from flask import request
 from werkzeug.urls import url_parse
-from flask_login import login_required
-from app import db
-from app.forms import RegistrationForm
+
+
 
 @app.route('/')
 @app.route('/index')
