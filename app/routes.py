@@ -15,7 +15,7 @@ def index ():
                 {
                         'author': {'username': 'John'},
                         'body': 'It\'s a beautiful day today!'
-                }
+                },
                 {
                         'author': {'username': 'Jane'},
                         'body': 'No it\'s not.'
