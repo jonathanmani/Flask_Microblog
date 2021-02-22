@@ -76,6 +76,12 @@ def user(username):
                 {
                         'author': user, 'body': 'Test Post #2'
                 }
+                {
+                        'author': user, 'body': 'Test Post #3'
+                }
+                {
+                        'author': user, 'body': 'Test Post #4'
+                }
         ]
         form = EmptyForm()
         return render_template('user.html', user=user, posts = posts, form=form)
