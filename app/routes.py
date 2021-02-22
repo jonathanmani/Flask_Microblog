@@ -75,10 +75,10 @@ def user(username):
                 },
                 {
                         'author': user, 'body': 'Test Post #2'
-                }
+                },
                 {
                         'author': user, 'body': 'Test Post #3'
-                }
+                },
                 {
                         'author': user, 'body': 'Test Post #4'
                 }
