@@ -1,8 +1,8 @@
 from flask import render_template, flash, request , redirect, url_for
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
 from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User
+from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
@@ -12,8 +12,8 @@ def before_request():
                 current_user.last_seen = datetime.utcnow()
                 db.session.commit()
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index ():
         posts =[
@@ -133,4 +133,3 @@ def unfollow(username):
         else:
                 return redirect(url_for('index'))
 
-@
