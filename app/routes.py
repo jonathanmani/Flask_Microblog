@@ -16,16 +16,14 @@ def before_request():
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index ():
-        posts =[
-                {
-                        'author': {'username': 'John'},
-                        'body': 'It\'s a beautiful day today!'
-                },
-                {
-                        'author': {'username': 'Jane'},
-                        'body': 'No it\'s not.'
-                }
-        ]
+        form=PostForm()
+        if form.validate_on_submit():
+                post=Post(body=form.post.data, author=current_user)
+                db.sesson.add(post)
+                db.session.commit()
+                flash('Your post is now live!')
+                return redirect(url_for('index'))
+        posts =current_user.followed_posts().all()
         return render_template('index.html', title ='Home Page', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
